@@ -7,6 +7,11 @@ import Profile from './components/profile';
 import CommunityInfo from './components/CommunityInfo';
 
 const App = () => {
+	if (true){
+		console.log('asdas')
+	} else {
+		console.log('12321')
+	}
 	return (
 		<div className='app-wrapper'>
 			<Header />
