@@ -7,6 +7,7 @@ import Profile from './components/profile';
 import CommunityInfo from './components/CommunityInfo';
 
 const App = () => {
+	console.log('hello i love u')
 	return (
 		<div className='app-wrapper'>
 			<Header />
