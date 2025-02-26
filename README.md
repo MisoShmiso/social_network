@@ -28,6 +28,8 @@ This is a React-based application designed to explore modern web development tec
 ## 📂 Project Structure
 
 Here’s a quick overview of the project structure:
+
+```
 social-network/
 ├── public/ # Static files (e.g., index.html)
 ├── src/ # Source code
@@ -40,6 +42,7 @@ social-network/
 │ └── index.js # Entry point
 ├── package.json # Project dependencies
 └── README.md # This file
+```
 
 ---
 
@@ -77,4 +80,5 @@ Follow these steps to set up and run the project locally.
    ```
 
 5. **Open your browser:**:
+
    Visit `http://localhost:3000` to view the app.
