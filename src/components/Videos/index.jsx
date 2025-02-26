@@ -5,7 +5,6 @@ import ReactPlayer from 'react-player'
 import { EyeOutlined } from '@ant-design/icons'
 
 const Videos = ({ videos }) => {
-	console.log()
 	return (
 		<div className={styles.videos}>
 			{videos.map((video, index) => {
