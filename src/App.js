@@ -7,7 +7,11 @@ import Profile from './components/profile';
 import CommunityInfo from './components/CommunityInfo';
 
 const App = () => {
-	console.log('hello i lov78678e u');
+	if (true){
+		console.log('asd')
+	} else {
+		console.log('second')
+	}
 	return (
 		<div className='app-wrapper'>
 			<Header />
