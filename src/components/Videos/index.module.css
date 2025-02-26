@@ -1,0 +1,15 @@
+.video{
+  width: calc(50% - 8px);
+  object-fit: cover; 
+}
+
+.videos {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.image{
+  display: flex;
+  border: 2px solid red;
+}

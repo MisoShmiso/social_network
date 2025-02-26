@@ -1,0 +1,27 @@
+.root {
+  flex-direction: column;
+  display: flex;
+  gap:24px;
+  background-color: white;
+  padding: 32px;
+  border-radius: 20px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.divider {
+  margin: 0;
+  padding: 0;
+}
+
+.totalCount {
+  text-decoration: none;
+
+}
+
+.totalCount:hover {
+  text-decoration: underline;
+}
