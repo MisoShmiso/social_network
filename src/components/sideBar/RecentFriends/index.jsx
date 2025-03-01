@@ -23,7 +23,7 @@ const friendAvatars = [
   Avatar9
 ];
 
-const Friends = () => {
+const RecentFriends = () => {
 	return (
 			<div className={styles.friendsList}>
 				{friendAvatars.map((avatar, index) => {
@@ -41,4 +41,4 @@ const Friends = () => {
 	);
 };
 
-export default Friends;
+export default RecentFriends;

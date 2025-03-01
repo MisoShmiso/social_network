@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './index.module.css';
 
-const Photos = () => {
+const Friends = () => {
   return (
     <div className={styles.root}>
-      Theres any Photos
+      Theres friend list
     </div>
   )
 }
 
-export default Photos;
+export default Friends;

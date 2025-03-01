@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './index.module.css';
 
-const Photos = () => {
+const Music = () => {
   return (
     <div className={styles.root}>
-      Theres any Photos
+      Here is some music
     </div>
   )
 }
 
-export default Photos;
+export default Music;

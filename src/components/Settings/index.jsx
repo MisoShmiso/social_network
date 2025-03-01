@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './index.module.css';
 
-const Photos = () => {
+const Settings = () => {
   return (
     <div className={styles.root}>
-      Theres any Photos
+      There is settings
     </div>
   )
 }
 
-export default Photos;
+export default Settings;

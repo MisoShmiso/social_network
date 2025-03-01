@@ -5,17 +5,22 @@ import Header from './components/header';
 import SideBar from './components/sideBar';
 import Feed from './components/Feed';
 import CommunityInfo from './components/CommunityInfo';
+import Dialogs from './components/Dialogs';
+import { BrowserRouter } from 'react-router-dom';
+import BodyRoutes from './routers';
 
 const App = () => {
 	return (
-		<div className='app-wrapper'>
-			<Header />
-			<div className='content'>
-				<SideBar />
-				<Feed />
-				<CommunityInfo />
+		<BrowserRouter>
+			<div className='app-wrapper'>
+				<Header />
+				<div className='content'>
+					<SideBar />
+					<BodyRoutes />
+					<CommunityInfo />
+				</div>
 			</div>
-		</div>
+		</BrowserRouter>
 	);
 };
 

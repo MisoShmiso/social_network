@@ -17,23 +17,23 @@
 	flex-direction: column;
 }
 
-.menuItem {
+.icon {
+	color: #054a75;
+}
+
+.link:hover {
+  background-color: #f0f7fa;
+}
+
+.link {
+	color: #054a75;
+	text-decoration:none;
 	display: flex;
 	gap: 12px;
 	padding: 16px 16px 16px 40px; 
 	align-items: center;
 }
 
-.menuItem:hover {
-  background-color: #f0f7fa;
-}
-
-.icon {
-	color: #054a75;
-}
-
-
-.link {
-	color: #054a75;
-	text-decoration:none;
+.active {
+  background-color: #f0f7fa; 
 }

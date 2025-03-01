@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './index.module.css';
 
-const Photos = () => {
+const Groups = () => {
   return (
     <div className={styles.root}>
-      Theres any Photos
+      Theres any groups
     </div>
   )
 }
 
-export default Photos;
+export default Groups;

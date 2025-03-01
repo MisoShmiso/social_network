@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './index.module.css';
 
-const Photos = () => {
+const Dialogs = () => {
   return (
     <div className={styles.root}>
-      Theres any Photos
+      Dialogs
     </div>
   )
 }
 
-export default Photos;
+export default Dialogs;

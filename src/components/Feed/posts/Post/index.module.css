@@ -1,0 +1,9 @@
+.root {
+  background-color: rgb(255, 255, 255);
+  padding: 32px;
+}
+
+.divider {
+  padding: 0;
+  margin: 0;
+}

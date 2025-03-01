@@ -1,5 +1,6 @@
 .root {
-  background-color: rgb(255, 255, 255);
+  display: flex;
   flex: 1;
-  padding: 32px;
+  gap: 16px;
+  flex-direction: column;
 }

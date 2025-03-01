@@ -3,9 +3,12 @@ import styles from './index.module.css';
 import { Tag } from 'antd';
 import { tags } from './data';
 
+
+
 const Hashtags = () => {
-
-
+	const getRandomTags = () =>{
+		return tags.sort(() => Math.random() - 0.5);
+	}
 	const getRandomStyles = () => {
 		const randomWidth = `${Math.floor(Math.random() * (150 - 80 + 1) + 80)}px`
 		const randomFontSize = `${Math.floor(Math.random() * (18 - 14 + 1) + 14)}px`
@@ -14,11 +17,10 @@ const Hashtags = () => {
 		return randomStyles
 	}
   
-	
 
 	return (
 		<div className={styles.tagsWrapper}>
-			{tags.map((tag, index) => {
+			{getRandomTags().map((tag, index) => {
 				return (
 					<Tag
 					  key={index}

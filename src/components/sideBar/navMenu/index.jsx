@@ -1,42 +1,51 @@
 import styles from './index.module.css';
-import {TeamOutlined, MailOutlined, CoffeeOutlined, TableOutlined, CameraOutlined, SoundOutlined, SettingOutlined} from '@ant-design/icons';
-
+import {
+	TeamOutlined,
+	MailOutlined,
+	CoffeeOutlined,
+	TableOutlined,
+	CameraOutlined,
+	SoundOutlined,
+	SettingOutlined,
+} from '@ant-design/icons';
+import { NavLink } from 'react-router-dom';
 
 const menuItems = [
-	{ 
-		icon: <TeamOutlined className={styles.icon}/>,
-		title: 'Friends',
-		href: '/',
+	{
+		icon: <CoffeeOutlined className={styles.icon} />,
+		title: 'Feed',
+		href: '/feed',
 	},
 	{
-		icon: <MailOutlined className={styles.icon}/>,
+		icon: <MailOutlined className={styles.icon} />,
 		title: 'Messages',
-		href: '/',
+		href: '/messages',
 	},
 	{
-		icon: <CoffeeOutlined className={styles.icon}/>,
-		title: 'News',
-		href: '/',
+		icon: <TeamOutlined className={styles.icon} />,
+		title: 'Friends',
+		href: '/friends',
 	},
+
 	{
-		icon: <TableOutlined className={styles.icon}/>,
+		icon: <TableOutlined className={styles.icon} />,
 		title: 'Groups',
-		href: '/',
+		href: '/groups',
 	},
 	{
-		icon:<CameraOutlined className={styles.icon}/>,
+		icon: <CameraOutlined className={styles.icon} />,
 		title: 'Photos',
-		href: '/',
+		href: '/photos',
 	},
 	{
-		icon:<SoundOutlined className={styles.icon}/>,
+		icon: <SoundOutlined className={styles.icon} />,
 		title: 'Music',
-		href: '/',
+		href: '/music',
 	},
 	{
-		icon:<SettingOutlined className={styles.icon}/>,
+		icon: <SettingOutlined className={styles.icon} />,
 		title: 'Settings',
-		href: '/',
+		href: '/settings',
 	},
 ];
 
@@ -47,10 +56,15 @@ const NavMenu = () => {
 			<div className={styles.menuItems}>
 				{menuItems.map((item, index) => {
 					return (
-						<div key={index} className={styles.menuItem} >
+						<NavLink
+							className={({ isActive }) =>
+								isActive ? `${styles.link} ${styles.active}` : styles.link
+							}
+							to={item.href}
+						>
 							{item.icon}
-							<a className={styles.link} href={item.href}>{item.title}</a>
-						</div>
+							<span>{item.title}</span>
+						</NavLink>
 					);
 				})}
 			</div>
