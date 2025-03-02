@@ -1,12 +1,21 @@
 import React from 'react';
 import styles from './index.module.css';
+import DialogItem from './DialogItem';
+import { dialogs } from '../../constants/constants';
 
 const Dialogs = () => {
-  return (
-    <div className={styles.root}>
-      Dialogs
-    </div>
-  )
-}
+	return (
+		<div className={styles.root}>
+			{dialogs.map((dialog) => {
+				return (
+					<DialogItem
+						key={dialog.id}
+						dialog={dialog}
+					/>
+				);
+			})}
+		</div>
+	);
+};
 
 export default Dialogs;

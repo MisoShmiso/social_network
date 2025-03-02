@@ -6,6 +6,7 @@ import Groups from './components/Groups';
 import Photos from './components/Photos';
 import Music from './components/Music';
 import Settings from './components/Settings';
+import Dialog from './components/Dialog';
 import { Route, Routes } from 'react-router-dom';
 
 const BodyRoutes = () => {
@@ -18,6 +19,10 @@ const BodyRoutes = () => {
 			<Route
 				path='/messages'
 				element={<Dialogs />}
+			/>
+			<Route
+				path='/messages/:id'
+				element={<Dialog />}
 			/>
 			<Route
 				path='/friends'

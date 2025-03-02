@@ -57,6 +57,7 @@ const NavMenu = () => {
 				{menuItems.map((item, index) => {
 					return (
 						<NavLink
+							key={index}
 							className={({ isActive }) =>
 								isActive ? `${styles.link} ${styles.active}` : styles.link
 							}
