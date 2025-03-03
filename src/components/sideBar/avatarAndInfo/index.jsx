@@ -1,27 +1,29 @@
 import React from 'react';
 import styles from './index.module.css';
-import { Progress, Avatar, Badge } from 'antd';
+import { Progress, Avatar } from 'antd';
 import { CheckCircleTwoTone } from '@ant-design/icons';
 import background from '../../../assets/images/background.jpg';
 import avatarPhoto from '../../../assets/icons/avatarPhoto.jpeg';
 
-
 const AvatarAndInfo = () => {
 	return (
 		<div className={styles.root}>
-			<img
-				className={styles.backgroundImage}
-				src={background}
-			/>
-			<div className={styles.avatarWrapper}>
-				<Avatar
-					className={styles.avatar}
-					size={110}
-					src={avatarPhoto}
+			<div className={styles.backgroundContainer}>
+				<img
+					className={styles.backgroundImage}
+					src={background}
+					alt='Background'
 				/>
-				<div className={styles.nameWrapper}>
-					<CheckCircleTwoTone twoToneColor='#52c41a' />
-					<span className={styles.name}>John Doe</span>
+				<div className={styles.avatarWrapper}>
+					<Avatar
+						className={styles.avatar}
+						size={110}
+						src={avatarPhoto}
+					/>
+					<div className={styles.nameWrapper}>
+						<CheckCircleTwoTone twoToneColor='#52c41a' />
+						<span className={styles.name}>John Doe</span>
+					</div>
 				</div>
 			</div>
 			<div className={styles.progressWrapper}>

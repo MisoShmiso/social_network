@@ -8,10 +8,36 @@
   background-color: white;
 }
 
-.backgroundImage {
-  width: 100%; 
+.backgroundContainer {
+  position: relative;
+  width: 100%;
   height: 180px;
   border-radius: 20px 20px 0 0;
+}
+
+.backgroundImage {
+  width: 100%;
+  height: 100%;
+}
+
+.avatarWrapper {
+  position: absolute;
+  bottom: -55px;
+  left: 24px;
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.avatar {
+  border: 4px solid white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.nameWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .name {
@@ -19,31 +45,11 @@
   font-weight: 500;
 }
 
-.avatar{
-  border: 4px solid white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
 .textOfProgress {
   display: flex;
   font-size: 16px;
   font-weight: 400;
   color: rgb(141, 141, 141);
-}
-
-.avatarWrapper {
-  display: flex;
-  align-items: flex-end;
-  gap: 16px;
-  position: absolute;
-  top: 240px;
-  left: 380px;
-}
-
-.nameWrapper {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
 }
 
 .progressWrapper {
