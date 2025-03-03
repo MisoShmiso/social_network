@@ -9,16 +9,16 @@ const DialogItem = ({ dialog }) => {
 			to={`/messages/${dialog.id}`}
 			className={styles.root}
 		>
-			<Avatar
-				className={styles.avatar}
-				size={110}
-				src={dialog.image}
-			/>
-			<div>
-				<span>{dialog.name}</span>
-			</div>
-			<div>
-				<span>{dialog.lastMessage}</span>
+			<div className={styles.dialogWrapper}>
+				<Avatar
+					className={styles.avatar}
+					size={90}
+					src={dialog.image}
+				/>
+				<div className={styles.nameMessageBlock}>
+					<span className={styles.name}>{dialog.name}</span>
+					<span className={styles.message}>{dialog.lastMessage}</span>
+				</div>
 			</div>
 		</NavLink>
 	);
