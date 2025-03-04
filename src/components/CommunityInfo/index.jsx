@@ -20,7 +20,10 @@ import previewVideo4 from '../../assets/images/previewVideo4.jpg';
 import previewVideo5 from '../../assets/images/previewVideo5.jpg';
 import previewVideo6 from '../../assets/images/previewVideo6.jpg';
 import previewVideo7 from '../../assets/images/previewVideo7.jpg';
-import previewVideo8 from '../../assets/images/previewVideo8.jpg'
+import previewVideo8 from '../../assets/images/previewVideo8.jpg';
+import { shouldHideCards } from '../../helpers';
+import { useLocation } from 'react-router-dom';
+import Friends from '../sideBar/RecentFriends';
 
 const images = [
 	picture1,
@@ -37,40 +40,40 @@ const images = [
 const videos = [
 	{
 		image: previewVideo1,
-		videoUrl: 'https://www.youtube.com/watch?v=G5RpJwCJDqc'
+		videoUrl: 'https://www.youtube.com/watch?v=G5RpJwCJDqc',
 	},
 	{
 		image: previewVideo2,
-		videoUrl: 'https://www.youtube.com/watch?v=QCJqRco_sC8'
+		videoUrl: 'https://www.youtube.com/watch?v=QCJqRco_sC8',
 	},
 	{
 		image: previewVideo3,
-		videoUrl: 'https://www.youtube.com/watch?v=0AugFrZPP9U'
+		videoUrl: 'https://www.youtube.com/watch?v=0AugFrZPP9U',
 	},
 	{
 		image: previewVideo4,
-		videoUrl: 'https://www.youtube.com/watch?v=zFiqZMTmolY'
+		videoUrl: 'https://www.youtube.com/watch?v=zFiqZMTmolY',
 	},
 	{
 		image: previewVideo5,
-		videoUrl: 'https://www.youtube.com/watch?v=lyh2kAjcmSY'
+		videoUrl: 'https://www.youtube.com/watch?v=lyh2kAjcmSY',
 	},
 	{
 		image: previewVideo6,
-		videoUrl: 'https://www.youtube.com/watch?v=YZ84iQrbYjw'
+		videoUrl: 'https://www.youtube.com/watch?v=YZ84iQrbYjw',
 	},
 	{
 		image: previewVideo7,
-		videoUrl: 'https://www.youtube.com/watch?v=FJC1eBRJ-DY'
+		videoUrl: 'https://www.youtube.com/watch?v=FJC1eBRJ-DY',
 	},
 	{
 		image: previewVideo8,
-		videoUrl: 'https://www.youtube.com/watch?v=z2Bbm1Jr0mI'
-	}
-
-]
+		videoUrl: 'https://www.youtube.com/watch?v=z2Bbm1Jr0mI',
+	},
+];
 
 const CommunityInfo = () => {
+	const location = useLocation();
 	return (
 		<div className={styles.root}>
 			<Card
@@ -78,16 +81,26 @@ const CommunityInfo = () => {
 				renderContent={() => <Hashtags />}
 				isViewAllVisible={false}
 			/>
-			<Card
-				title='Latest Community Photos'
-				renderContent={() => <Photos images={images} />}
-				totalCount={176}
-			/>
-			<Card
-				title='Community Media'
-				renderContent={() => <Videos videos={videos}/>}
-				totalCount={229}
-			/>
+			{!shouldHideCards(location.pathname) ? (
+				<>
+					<Card
+						title='Latest Community Photos'
+						renderContent={() => <Photos images={images} />}
+						totalCount={176}
+					/>
+					<Card
+						title='Community Media'
+						renderContent={() => <Videos videos={videos} />}
+						totalCount={229}
+					/>
+				</>
+			) : (
+				<Card
+					title='My Friends'
+					renderContent={() => <Friends />}
+					totalCount={45}
+				/>
+			)}
 		</div>
 	);
 };

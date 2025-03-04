@@ -14,6 +14,8 @@ import picture6 from '../../assets/images/myPhoto6.jpg';
 import picture7 from '../../assets/images/myPhoto7.jpg';
 import picture8 from '../../assets/images/myPhoto8.jpg';
 import picture9 from '../../assets/images/myPhoto9.jpg';
+import { useLocation } from 'react-router-dom';
+import { shouldHideCards } from '../../helpers';
 
 const pictures = [
 	picture1,
@@ -26,23 +28,30 @@ const pictures = [
 	picture8,
 	picture9,
 ];
+
 const SideBar = () => {
+	const location = useLocation();
+
 	return (
 		<div className={styles.root}>
 			<div>
 				<AvatarAndInfo />
 				<NavMenu />
 			</div>
-			<Card
-				title='My Friends'
-				renderContent={() => <Friends />}
-				totalCount={45}
-			/>
-			<Card
-				title='My Photos'
-				renderContent={() => <Photos images={pictures} />}
-				totalCount={176}
-			/>
+			{!shouldHideCards(location.pathname) && (
+				<>
+					<Card
+						title='My Friends'
+						renderContent={() => <Friends />}
+						totalCount={45}
+					/>
+					<Card
+						title='My Photos'
+						renderContent={() => <Photos images={pictures} />}
+						totalCount={176}
+					/>
+				</>
+			)}
 		</div>
 	);
 };

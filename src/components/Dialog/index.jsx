@@ -3,7 +3,7 @@ import styles from './index.module.css';
 import { useParams } from 'react-router';
 import { dialogs } from '../../constants/constants';
 import BackButton from '../BackButton';
-import { Avatar } from 'antd';
+import { Avatar, Divider } from 'antd';
 
 const Dialog = () => {
 	const { id } = useParams();
@@ -14,11 +14,12 @@ const Dialog = () => {
 				<BackButton />
 				<Avatar
 					className={styles.avatar}
-					size={70}
+					size={80}
 					src={targetDialog.image}
 				/>
-				<span>{targetDialog.name}</span>
+				<span className={styles.name}>{targetDialog.name}</span>
 			</div>
+			<Divider className={styles.divider} />
 			<span>{targetDialog.lastMessage}</span>
 		</div>
 	);

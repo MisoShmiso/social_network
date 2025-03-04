@@ -38,3 +38,5 @@ export const dialogs = [
 		image: friendPhoto5,
 	},
 ];
+
+export const urlsWithoutCards = ['/messages'];
