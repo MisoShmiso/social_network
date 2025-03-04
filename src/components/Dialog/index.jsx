@@ -2,23 +2,23 @@ import React from 'react';
 import styles from './index.module.css';
 import { useParams } from 'react-router';
 import { dialogs } from '../../constants/constants';
-import { useNavigate } from 'react-router-dom';
-import { Button } from 'antd';
-import { CloseOutlined } from '@ant-design/icons';
+import BackButton from '../BackButton';
+import { Avatar } from 'antd';
 
 const Dialog = () => {
 	const { id } = useParams();
-	const navigate = useNavigate();
 	const targetDialog = dialogs.find((dialog) => dialog.id === id);
-
 	return (
 		<div className={styles.root}>
-			<Button
-				variant={'text'}
-				color={'default'}
-				icon={<CloseOutlined />}
-				onClick={() => navigate(-1)}
-			/>
+			<div className={styles.header}>
+				<BackButton />
+				<Avatar
+					className={styles.avatar}
+					size={70}
+					src={targetDialog.image}
+				/>
+				<span>{targetDialog.name}</span>
+			</div>
 			<span>{targetDialog.lastMessage}</span>
 		</div>
 	);
