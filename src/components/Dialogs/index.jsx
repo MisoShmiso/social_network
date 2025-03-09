@@ -1,9 +1,8 @@
 import React from 'react';
 import styles from './index.module.css';
 import DialogItem from './DialogItem';
-import { dialogs } from '../../constants/constants';
 
-const Dialogs = () => {
+const Dialogs = ({ dialogs }) => {
 	return (
 		<div className={styles.root}>
 			{dialogs.map((dialog) => {

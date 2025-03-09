@@ -1,17 +1,17 @@
 import React from 'react';
-import styles  from'./index.module.css';
+import styles from './index.module.css';
 import Posts from './posts';
 import InputForPost from './inputForPost';
 import Filter from './FIlter';
 
-const Feed = () => {
-return (
-  <div className={styles.root}>
-   <InputForPost />
-   <Filter />
-   <Posts />
-  </div>
-)
-}
+const Feed = ({ posts }) => {
+	return (
+		<div className={styles.root}>
+			<InputForPost />
+			<Filter />
+			<Posts posts={posts} />
+		</div>
+	);
+};
 
 export default Feed;

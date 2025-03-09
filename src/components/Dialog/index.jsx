@@ -1,11 +1,10 @@
 import React from 'react';
 import styles from './index.module.css';
 import { useParams } from 'react-router';
-import { dialogs } from '../../constants/constants';
 import BackButton from '../BackButton';
 import { Avatar, Divider } from 'antd';
 
-const Dialog = () => {
+const Dialog = ({ dialogs }) => {
 	const { id } = useParams();
 	const targetDialog = dialogs.find((dialog) => dialog.id === id);
 	return (

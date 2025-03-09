@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './index.module.css';
-import { Image } from 'antd'
-import ReactPlayer from 'react-player'
-import { EyeOutlined } from '@ant-design/icons'
+import { Image } from 'antd';
+import ReactPlayer from 'react-player';
+import { EyeOutlined } from '@ant-design/icons';
 
 const Videos = ({ videos }) => {
 	return (
@@ -15,7 +15,7 @@ const Videos = ({ videos }) => {
 						rootClassName={styles.video}
 						preview={{
 							destroyOnClose: true,
-							// mask: false, 
+							// mask: false,
 							imageRender: () => (
 								<ReactPlayer
 									width={'60%'}
@@ -26,8 +26,7 @@ const Videos = ({ videos }) => {
 							toolbarRender: () => null,
 						}}
 						src={video.image}
-					>
-					</Image > 
+					></Image>
 				);
 			})}
 		</div>
