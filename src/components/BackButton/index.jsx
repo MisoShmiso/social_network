@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './index.module.css';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'antd';
-import { CloseOutlined } from '@ant-design/icons';
+import { LeftOutlined } from '@ant-design/icons';
 
 const BackButton = () => {
 	const navigate = useNavigate();
@@ -12,7 +12,8 @@ const BackButton = () => {
 			className={styles.root}
 			variant={'text'}
 			color={'default'}
-			icon={<CloseOutlined />}
+			size={'large'}
+			icon={<LeftOutlined />}
 			onClick={() => navigate(-1)}
 		/>
 	);

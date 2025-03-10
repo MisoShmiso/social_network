@@ -16,7 +16,7 @@ const InputForPost = () => {
 				<TextArea
 					value={value}
 					onChange={(e) => setValue(e.target.value)}
-					placeholder='Controlled autosize'
+					placeholder='Write a text'
 					autoSize={{ minRows: 3, maxRows: 5 }}
 				/>
 			</div>

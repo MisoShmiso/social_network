@@ -7,13 +7,14 @@
 	gap: 24px;
   background-color: white;
 	padding: 32px;
+	justify-content: space-between;
 }
 
 
 .header {
 	display: flex;
-	align-items: center;
   gap: 16px;
+	flex-direction: column;
 }
 
 
@@ -25,4 +26,30 @@
 .name {
 	font-weight: 500;
 	font-size: 20px;;
+}
+
+.headerTitleBlock {
+	display: flex;
+	gap: 16px;
+	align-items: center;
+}
+
+.messageArea {
+	flex:1;
+	display: flex;
+	flex-direction: column;
+	gap: 16px
+}
+
+.inputBox {
+display: flex;
+gap: 8px;
+align-items: center;
+}
+
+.messageWrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	
 }
