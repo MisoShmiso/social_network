@@ -8,12 +8,11 @@ import { SendOutlined, CloseOutlined } from '@ant-design/icons';
 
 const { TextArea } = Input;
 
-const initialMessages = ["Sure, let's do it today at 7 then."];
-
 const Dialog = ({ dialogs }) => {
 	const { id } = useParams();
 	const targetDialog = dialogs.find((dialog) => dialog.id === id);
 	const [value, setValue] = useState();
+	const initialMessages = [targetDialog.lastMessage];
 	const [messages, setMessages] = useState(initialMessages);
 	const sendMessage = () => {
 		setMessages((prev) => {
@@ -22,11 +21,8 @@ const Dialog = ({ dialogs }) => {
 		setValue('');
 	};
 	const deleteMessage = (index) => {
-		// Создаем копию массива, чтобы не мутировать исходный массив напрямую
 		const updatedMessages = [...messages];
-		// Удаляем элемент по индексу
 		updatedMessages.splice(index, 1);
-		// Обновляем состояние
 		setMessages(updatedMessages);
 	};
 	return (
