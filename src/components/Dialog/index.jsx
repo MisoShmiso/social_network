@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styles from './index.module.css';
 import { useParams } from 'react-router';
 import BackButton from '../BackButton';
@@ -12,8 +12,31 @@ const Dialog = ({ dialogs }) => {
 	const { id } = useParams();
 	const targetDialog = dialogs.find((dialog) => dialog.id === id);
 	const [value, setValue] = useState();
-	const initialMessages = [targetDialog.lastMessage];
+	const initialMessages = [
+		targetDialog.lastMessage,
+		'ddsfgsggs',
+		'ddsfgsggs',
+		'ddsfgsggs',
+		'ddsfgsggs',
+		'ddsfgsggs',
+		'ddsfgsggs',
+		'ddsfgsggs',
+		'ddsfgsggs',
+		'ddsfgsggs',
+		'ddsfgsggs',
+		'ddsfgsggs',
+		'ddsfgsggs',
+		'ddsfgsggs',
+		'ddsfgsggs',
+		'ddsfgsggs',
+		'ddsfgsggs',
+		'ddsfgsggs',
+		'ddsfgsggs',
+		'ddsfgsggs',
+		'ddsfgsggs',
+	];
 	const [messages, setMessages] = useState(initialMessages);
+	const messageAreaRef = useRef(null);
 	const sendMessage = () => {
 		setMessages((prev) => {
 			return [...prev, value];
@@ -25,6 +48,20 @@ const Dialog = ({ dialogs }) => {
 		updatedMessages.splice(index, 1);
 		setMessages(updatedMessages);
 	};
+
+	useEffect(() => {
+		const scrollToBottom = () => {
+			if (messageAreaRef.current) {
+				messageAreaRef.current.scrollTo({
+					top: messageAreaRef.current.scrollHeight,
+					behavior: 'smooth',
+				});
+			}
+		};
+
+		setTimeout(scrollToBottom, 0);
+	}, [messages.length]);
+
 	return (
 		<div className={styles.root}>
 			<div className={styles.header}>
@@ -39,7 +76,10 @@ const Dialog = ({ dialogs }) => {
 				</div>
 				<Divider className={styles.divider} />
 			</div>
-			<div className={styles.messageArea}>
+			<div
+				className={styles.messageArea}
+				ref={messageAreaRef}
+			>
 				{messages.map((message, index) => {
 					return (
 						<div className={styles.messageWrapper}>

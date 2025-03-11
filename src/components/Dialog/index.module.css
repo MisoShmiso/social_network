@@ -1,22 +1,22 @@
-.root {
-	display: flex;
-	flex: 1;
-	width: 50%;
-	border-radius: 20px;
-	flex-direction: column;
-	gap: 24px;
-  background-color: white;
-	padding: 32px;
-	justify-content: space-between;
-}
 
+.root {
+  display: flex;
+  flex: 1;
+  width: 50%;
+  border-radius: 20px;
+  flex-direction: column;
+  gap: 24px;
+  background-color: white;
+  padding: 32px;
+  justify-content: space-between;
+	height: calc(100vh - 190px);
+}
 
 .header {
-	display: flex;
+  display: flex;
   gap: 16px;
-	flex-direction: column;
+  flex-direction: column;
 }
-
 
 .divider {
   margin: 0;
@@ -24,32 +24,33 @@
 }
 
 .name {
-	font-weight: 500;
-	font-size: 20px;;
+  font-weight: 500;
+  font-size: 20px;
 }
 
 .headerTitleBlock {
-	display: flex;
-	gap: 16px;
-	align-items: center;
+  display: flex;
+  gap: 16px;
+  align-items: center;
 }
 
 .messageArea {
-	flex:1;
-	display: flex;
-	flex-direction: column;
-	gap: 16px
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto; 
+  max-height: calc(100vh - 200px);
 }
 
 .inputBox {
-display: flex;
-gap: 8px;
-align-items: center;
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
 .messageWrapper {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
