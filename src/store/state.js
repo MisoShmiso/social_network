@@ -5,7 +5,19 @@ import friendPhoto3 from '../assets/images/friendPhoto3.jpg';
 import friendPhoto8 from '../assets/images/friendPhoto8.jpg';
 import friendPhoto5 from '../assets/images/friendPhoto5.jpg';
 
-const state = {
+export let addPost = (post) => {
+	console.log(post);
+	let newPost = {
+		title: post.title,
+		author: post.author,
+		description: post.description,
+		likes: 0,
+		comments: [],
+	};
+	state.posts.push(newPost);
+};
+
+export const state = {
 	dialogs: [
 		{
 			name: 'Andrew Simmons',

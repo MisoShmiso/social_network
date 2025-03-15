@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './index.module.css';
 import Posts from './posts';
 import InputForPost from './inputForPost';
