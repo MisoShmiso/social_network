@@ -38,7 +38,6 @@ const Dialog = observer(() => {
 		};
 
 		setTimeout(scrollToBottom, 0);
-		console.log(setTimeout);
 	}, [messagesStore.messages.length]);
 
 	return (
