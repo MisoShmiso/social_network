@@ -6,6 +6,7 @@ const Header = () => {
 	return (
 		<div className={styles.root}>
 			<img
+				alt='logo'
 				className={styles.logo}
 				src={Image}
 			/>
