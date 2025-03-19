@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
+import { observer } from 'mobx-react-lite';
 import styles from './index.module.css';
 import { Input, Button } from 'antd';
-import { addPost } from '../../../store/state';
+import { useStore } from '../../../models/StoreContext';
 
 const { TextArea } = Input;
 
-export const InputForPost = () => {
-	const [description, setDescription] = useState();
-	const [title, setTitle] = useState();
+export const InputForPost = observer(() => {
+	const [description, setDescription] = useState('');
+	const [title, setTitle] = useState('');
+	const postStore = useStore('postStore');
 
 	const cleanup = () => {
-		setDescription();
-		setTitle();
+		setDescription('');
+		setTitle('');
 	};
+
 	const handleAddPost = () => {
-		const newPost = {
-			title: title,
+		postStore.addPost({
+			title,
 			author: 'John Doe',
-			description: description,
-		};
-		addPost(newPost);
+			description,
+		});
 		cleanup();
 	};
 
@@ -52,6 +54,6 @@ export const InputForPost = () => {
 			</div>
 		</div>
 	);
-};
+});
 
 export default InputForPost;

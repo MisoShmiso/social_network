@@ -1,11 +1,13 @@
 import React from 'react';
 import styles from './index.module.css';
 import DialogItem from './DialogItem';
+import { useStore } from '../../models/StoreContext';
 
-const Dialogs = ({ dialogs }) => {
+const Dialogs = () => {
+	const { dialogStore } = useStore();
 	return (
 		<div className={styles.root}>
-			{dialogs.map((dialog) => {
+			{dialogStore.getSortedByDate().map((dialog) => {
 				return (
 					<DialogItem
 						key={dialog.id}

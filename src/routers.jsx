@@ -9,20 +9,20 @@ import Settings from './components/Settings';
 import Dialog from './components/Dialog';
 import { Route, Routes } from 'react-router-dom';
 
-const BodyRoutes = ({ dialogs, posts }) => {
+const BodyRoutes = () => {
 	return (
 		<Routes>
 			<Route
 				path='/feed'
-				element={<Feed posts={posts} />}
+				element={<Feed />}
 			/>
 			<Route
 				path='/messages'
-				element={<Dialogs dialogs={dialogs} />}
+				element={<Dialogs />}
 			/>
 			<Route
 				path='/messages/:id'
-				element={<Dialog dialogs={dialogs} />}
+				element={<Dialog />}
 			/>
 			<Route
 				path='/friends'

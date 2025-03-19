@@ -1,11 +1,14 @@
 import React from 'react';
 import styles from './index.module.css';
 import Post from './Post';
+import { observer } from 'mobx-react-lite';
+import { useStore } from '../../../models/StoreContext';
 
-const Posts = ({ posts }) => {
+const Posts = observer(() => {
+	const postStore = useStore('postStore');
 	return (
 		<div className={styles.root}>
-			{posts.map((post, index) => {
+			{postStore.getSortedByDate().map((post, index) => {
 				return (
 					<Post
 						key={index}
@@ -15,6 +18,6 @@ const Posts = ({ posts }) => {
 			})}
 		</div>
 	);
-};
+});
 
 export default Posts;

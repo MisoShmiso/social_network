@@ -5,48 +5,26 @@ import BackButton from '../BackButton';
 import { Avatar, Divider } from 'antd';
 import { Input, Button } from 'antd';
 import { SendOutlined, CloseOutlined } from '@ant-design/icons';
+import { useStore } from '../../models/StoreContext';
+import MessagesStore from '../../models/stores/MessagesStore';
+import { observer } from 'mobx-react-lite';
 
 const { TextArea } = Input;
 
-const Dialog = ({ dialogs }) => {
+const Dialog = observer(() => {
 	const { id } = useParams();
-	const targetDialog = dialogs.find((dialog) => dialog.id === id);
+	const { messagesStore, dialogStore } = useStore();
+	const targetDialog = dialogStore.getDialogById(Number(id));
 	const [value, setValue] = useState();
-	const initialMessages = [
-		targetDialog.lastMessage,
-		'ddsfgsggs',
-		'ddsfgsggs',
-		'ddsfgsggs',
-		'ddsfgsggs',
-		'ddsfgsggs',
-		'ddsfgsggs',
-		'ddsfgsggs',
-		'ddsfgsggs',
-		'ddsfgsggs',
-		'ddsfgsggs',
-		'ddsfgsggs',
-		'ddsfgsggs',
-		'ddsfgsggs',
-		'ddsfgsggs',
-		'ddsfgsggs',
-		'ddsfgsggs',
-		'ddsfgsggs',
-		'ddsfgsggs',
-		'ddsfgsggs',
-		'ddsfgsggs',
-	];
-	const [messages, setMessages] = useState(initialMessages);
 	const messageAreaRef = useRef(null);
+
 	const sendMessage = () => {
-		setMessages((prev) => {
-			return [...prev, value];
+		messagesStore.sendMessage({
+			description: value,
+			dialogId: Number(id),
+			author: 'John Doe',
 		});
 		setValue('');
-	};
-	const deleteMessage = (index) => {
-		const updatedMessages = [...messages];
-		updatedMessages.splice(index, 1);
-		setMessages(updatedMessages);
 	};
 
 	useEffect(() => {
@@ -60,7 +38,7 @@ const Dialog = ({ dialogs }) => {
 		};
 
 		setTimeout(scrollToBottom, 0);
-	}, [messages.length]);
+	}, [messagesStore.messages.length]);
 
 	return (
 		<div className={styles.root}>
@@ -80,17 +58,22 @@ const Dialog = ({ dialogs }) => {
 				className={styles.messageArea}
 				ref={messageAreaRef}
 			>
-				{messages.map((message, index) => {
+				{messagesStore.getSortedByDate().map((message, index) => {
 					return (
 						<div className={styles.messageWrapper}>
-							<span key={index}>{message}</span>
+							<div className={styles.messageBlock}>
+								<span className={styles.author}>{message.author}</span>
+								<span key={index}>{message.description}</span>
+							</div>
 							<Button
 								className={styles.button}
 								variant={'text'}
 								size={'small'}
 								color={'default'}
 								icon={<CloseOutlined />}
-								onClick={() => deleteMessage(index)}
+								onClick={() => {
+									messagesStore.deleteMessage({ id: message.id });
+								}}
 							/>
 						</div>
 					);
@@ -115,6 +98,6 @@ const Dialog = ({ dialogs }) => {
 			</div>
 		</div>
 	);
-};
+});
 
 export default Dialog;
