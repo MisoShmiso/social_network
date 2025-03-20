@@ -5,7 +5,7 @@ import { observer } from 'mobx-react-lite';
 import { useStore } from '../../../models/StoreContext';
 
 const Posts = observer(() => {
-	const postStore = useStore('postStore');
+	const { postStore } = useStore();
 	return (
 		<div className={styles.root}>
 			{postStore.getSortedByDate().map((post, index) => {

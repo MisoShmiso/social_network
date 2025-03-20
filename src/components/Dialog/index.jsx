@@ -4,7 +4,7 @@ import { useParams } from 'react-router';
 import BackButton from '../BackButton';
 import { Avatar, Divider } from 'antd';
 import { Input, Button } from 'antd';
-import { SendOutlined, CloseOutlined } from '@ant-design/icons';
+import { SendOutlined, CloseOutlined, EditOutlined } from '@ant-design/icons';
 import { useStore } from '../../models/StoreContext';
 import MessagesStore from '../../models/stores/MessagesStore';
 import { observer } from 'mobx-react-lite';
@@ -14,8 +14,10 @@ const { TextArea } = Input;
 const Dialog = observer(() => {
 	const { id } = useParams();
 	const { messagesStore, dialogStore } = useStore();
+	const [isEdit, setIsEdit] = useState(false);
 	const targetDialog = dialogStore.getDialogById(Number(id));
 	const [value, setValue] = useState();
+	const [editId, setEditId] = useState();
 	const messageAreaRef = useRef(null);
 
 	const sendMessage = () => {
@@ -25,6 +27,16 @@ const Dialog = observer(() => {
 			author: 'John Doe',
 		});
 		setValue('');
+	};
+
+	const editMessage = () => {
+		messagesStore.editMessage({
+			description: value,
+			id: editId,
+		});
+		setIsEdit(false);
+		setValue();
+		setEditId();
 	};
 
 	useEffect(() => {
@@ -69,10 +81,22 @@ const Dialog = observer(() => {
 								className={styles.button}
 								variant={'text'}
 								size={'small'}
-								color={'default'}
+								color={'danger'}
 								icon={<CloseOutlined />}
 								onClick={() => {
 									messagesStore.deleteMessage({ id: message.id });
+								}}
+							/>
+							<Button
+								className={styles.button}
+								variant={'text'}
+								size={'small'}
+								color={'default'}
+								icon={<EditOutlined />}
+								onClick={() => {
+									setValue(message.description);
+									setIsEdit(true);
+									setEditId(message.id);
 								}}
 							/>
 						</div>
@@ -92,7 +116,7 @@ const Dialog = observer(() => {
 					size={'large'}
 					color={'default'}
 					icon={<SendOutlined />}
-					onClick={sendMessage}
+					onClick={isEdit ? editMessage : sendMessage}
 					disabled={!value}
 				/>
 			</div>

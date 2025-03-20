@@ -9,7 +9,7 @@ const { TextArea } = Input;
 export const InputForPost = observer(() => {
 	const [description, setDescription] = useState('');
 	const [title, setTitle] = useState('');
-	const postStore = useStore('postStore');
+	const { postStore } = useStore();
 
 	const cleanup = () => {
 		setDescription('');
