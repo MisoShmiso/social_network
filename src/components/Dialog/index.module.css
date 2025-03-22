@@ -1,4 +1,3 @@
-
 .root {
   display: flex;
   flex: 1;
@@ -9,7 +8,7 @@
   background-color: white;
   padding: 32px;
   justify-content: space-between;
-	height: calc(100vh - 190px);
+  height: calc(100vh - 190px);
   overflow: hidden;
 }
 
@@ -40,14 +39,13 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  overflow-y: auto; 
-  max-width: 100%; 
+  overflow-y: auto;
+  max-width: 100%;
   max-height: 100%;
   min-height: 0;
   padding-right: 16px;
-  
 
-  scrollbar-width: thin; 
+  scrollbar-width: thin;
   scrollbar-color: #888888 #f1f1f1;
 }
 
@@ -59,10 +57,10 @@
 
 .messageWrapper {
   display: flex;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  max-width: 100%; 
+  max-width: 100%;
   gap: 8px;
 }
 
@@ -96,7 +94,7 @@
   flex-direction: column;
   gap: 8px;
   flex: 1;
-  min-width: 0; 
+  min-width: 0;
   overflow-wrap: break-word;
   white-space: normal;
 }
@@ -137,16 +135,16 @@
 }
 
 .textArea {
- border-radius: 8px;
- border: none;
+  border-radius: 8px;
+  border: none;
 }
 
 .textArea:focus,
 .textArea:hover,
 .textArea:active {
-  outline: none; 
-  border: none; 
-  box-shadow: none; 
+  outline: none;
+  border: none;
+  box-shadow: none;
 }
 
 .textAboutEditing {
@@ -164,10 +162,10 @@
 }
 
 .editedTextArea {
- border-radius: 0 0 8px 8px;
+  border-radius: 0 0 8px 8px;
 }
 
-.editInfoWrapper{
+.editInfoWrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -176,7 +174,7 @@
   padding: 11px;
 
   padding-right: 16px;
-  overflow: hidden; 
+  overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -184,11 +182,11 @@
 .leftEditSite > span:last-child {
   overflow: hidden;
   white-space: nowrap;
-  text-overflow: ellipsis; 
+  text-overflow: ellipsis;
 }
 
 .messageBlock > span:last-child {
-  max-width: 100%; 
-  overflow-wrap: break-word; 
-  white-space: normal; 
+  max-width: 100%;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
