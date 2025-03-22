@@ -4,7 +4,12 @@ import { useParams } from 'react-router';
 import BackButton from '../BackButton';
 import { Avatar, Divider } from 'antd';
 import { Input, Button } from 'antd';
-import { SendOutlined, CloseOutlined, EditOutlined } from '@ant-design/icons';
+import {
+	SendOutlined,
+	DeleteOutlined,
+	EditOutlined,
+	CloseOutlined,
+} from '@ant-design/icons';
 import { useStore } from '../../models/StoreContext';
 import MessagesStore from '../../models/stores/MessagesStore';
 import { observer } from 'mobx-react-lite';
@@ -27,6 +32,12 @@ const Dialog = observer(() => {
 			author: 'John Doe',
 		});
 		setValue('');
+	};
+
+	const cancelOfEdit = (message) => {
+		setValue(message.description);
+		setIsEdit(true);
+		setEditId(message.id);
 	};
 
 	const editMessage = () => {
@@ -73,52 +84,95 @@ const Dialog = observer(() => {
 				{messagesStore.getSortedByDate().map((message, index) => {
 					return (
 						<div className={styles.messageWrapper}>
-							<div className={styles.messageBlock}>
+							<div
+								className={
+									isEdit && editId === message.id
+										? styles.changedBlock
+										: styles.messageBlock
+								}
+							>
 								<span className={styles.author}>{message.author}</span>
+
 								<span key={index}>{message.description}</span>
 							</div>
-							<Button
-								className={styles.button}
-								variant={'text'}
-								size={'small'}
-								color={'danger'}
-								icon={<CloseOutlined />}
-								onClick={() => {
-									messagesStore.deleteMessage({ id: message.id });
-								}}
-							/>
-							<Button
-								className={styles.button}
-								variant={'text'}
-								size={'small'}
-								color={'default'}
-								icon={<EditOutlined />}
-								onClick={() => {
-									setValue(message.description);
-									setIsEdit(true);
-									setEditId(message.id);
-								}}
-							/>
+							{!isEdit && (
+								<Button
+									className={styles.button}
+									variant={'text'}
+									size={'small'}
+									color={'danger'}
+									disabled={isEdit}
+									icon={<DeleteOutlined />}
+									onClick={() => {
+										messagesStore.deleteMessage({ id: message.id });
+									}}
+								/>
+							)}
+							{!isEdit && (
+								<Button
+									className={
+										isEdit && message.id !== editId
+											? styles.hideButton
+											: styles.button
+									}
+									variant={'text'}
+									size={'small'}
+									color={'default'}
+									icon={
+										isEdit && editId === message.id ? (
+											<CloseOutlined />
+										) : (
+											<EditOutlined />
+										)
+									}
+									onClick={() =>
+										isEdit && editId === message.id
+											? editMessage()
+											: cancelOfEdit(message)
+									}
+								/>
+							)}
 						</div>
 					);
 				})}
 			</div>
 			<div className={styles.inputBox}>
-				<TextArea
-					value={value}
-					onChange={(e) => setValue(e.target.value)}
-					placeholder='Write a message'
-					autoSize={{ minRows: 3, maxRows: 5 }}
-				/>
-				<Button
-					className={styles.button}
-					variant={'text'}
-					size={'large'}
-					color={'default'}
-					icon={<SendOutlined />}
-					onClick={isEdit ? editMessage : sendMessage}
-					disabled={!value}
-				/>
+				{isEdit && (
+					<div className={styles.inputForEdit}>
+						<div className={styles.editInfoWrapper}>
+							<div className={styles.leftEditSite}>
+								<span className={styles.textAboutEditing}>Editing message</span>
+								<span>{messagesStore.getMessageById(editId).description}</span>
+							</div>
+							<div className={styles.rightEditSite}>
+								<CloseOutlined onClick={() => setIsEdit(false)} />
+							</div>
+						</div>
+					</div>
+				)}
+				<div
+					className={`${styles.areaAndButton} ${
+						isEdit ? styles.editedTextArea : ''
+					}`}
+				>
+					<TextArea
+						className={styles.textArea}
+						value={value}
+						onChange={(e) => setValue(e.target.value)}
+						placeholder='Write a message'
+						autoSize={{ minRows: 3, maxRows: 5 }}
+						variant={isEdit ? 'underline' : 'outlined'}
+					/>
+					<Button
+						className={styles.button}
+						variant={'text'}
+						size={'large'}
+						color={'default'}
+						icon={<SendOutlined />}
+						onClick={isEdit ? editMessage : sendMessage}
+						disabled={!value}
+					/>
+				</div>
 			</div>
 		</div>
 	);

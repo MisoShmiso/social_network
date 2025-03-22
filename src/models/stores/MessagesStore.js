@@ -11,6 +11,9 @@ const MessagesStore = types
 		getSortedByDate() {
 			return [...self.messages].sort((a, b) => b.createdAt - a.createdAt);
 		},
+		getMessageById(id) {
+			return self.messages.find((message) => message.id === id);
+		},
 	}))
 
 	.actions((self) => ({
