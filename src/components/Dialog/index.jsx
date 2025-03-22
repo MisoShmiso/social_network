@@ -175,9 +175,8 @@ const Dialog = observer(() => {
 					</div>
 				)}
 				<div
-					className={`${styles.areaAndButton} ${
-						isEdit ? styles.editedTextArea : ''
-					}`}
+					className={`${styles.areaAndButton} ${isEdit ? styles.editedTextArea : ''
+						}`}
 				>
 					<TextArea
 						ref={textAreaRef}
