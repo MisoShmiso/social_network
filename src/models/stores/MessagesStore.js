@@ -9,7 +9,7 @@ const MessagesStore = types
 
 	.views((self) => ({
 		getSortedByDate() {
-			return [...self.messages].sort((a, b) => b.createdAt - a.createdAt);
+			return [...self.messages].sort((a, b) => a.createdAt - b.createdAt);
 		},
 		getMessageById(id) {
 			return self.messages.find((message) => message.id === id);

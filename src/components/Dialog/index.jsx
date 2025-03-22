@@ -24,6 +24,7 @@ const Dialog = observer(() => {
 	const [value, setValue] = useState();
 	const [editId, setEditId] = useState();
 	const messageAreaRef = useRef(null);
+	const textAreaRef = useRef(null);
 
 	const sendMessage = () => {
 		messagesStore.sendMessage({
@@ -38,6 +39,21 @@ const Dialog = observer(() => {
 		setValue(message.description);
 		setIsEdit(true);
 		setEditId(message.id);
+		setTimeout(() => {
+			if (textAreaRef.current) {
+				let textAreaElement;
+				if (textAreaRef.current.resizableTextArea?.textArea) {
+					textAreaElement = textAreaRef.current.resizableTextArea.textArea;
+				} else if (textAreaRef.current.focus) {
+					textAreaElement = textAreaRef.current;
+				}
+				if (textAreaElement) {
+					textAreaElement.focus();
+					const textLength = textAreaElement.value.length;
+					textAreaElement.setSelectionRange(textLength, textLength);
+				}
+			}
+		}, 0);
 	};
 
 	const editMessage = () => {
@@ -48,6 +64,15 @@ const Dialog = observer(() => {
 		setIsEdit(false);
 		setValue();
 		setEditId();
+	};
+
+	const handleKeyDown = (event) => {
+		if (event.key === 'Enter' && !event.shiftKey) {
+			event.preventDefault();
+			if (value) {
+				isEdit ? editMessage() : sendMessage();
+			}
+		}
 	};
 
 	useEffect(() => {
@@ -92,7 +117,6 @@ const Dialog = observer(() => {
 								}
 							>
 								<span className={styles.author}>{message.author}</span>
-
 								<span key={index}>{message.description}</span>
 							</div>
 							{!isEdit && (
@@ -156,12 +180,14 @@ const Dialog = observer(() => {
 					}`}
 				>
 					<TextArea
+						ref={textAreaRef}
 						className={styles.textArea}
 						value={value}
 						onChange={(e) => setValue(e.target.value)}
 						placeholder='Write a message'
 						autoSize={{ minRows: 3, maxRows: 5 }}
 						variant={isEdit ? 'underline' : 'outlined'}
+						onKeyDown={handleKeyDown}
 					/>
 					<Button
 						className={styles.button}
