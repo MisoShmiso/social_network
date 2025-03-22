@@ -1,38 +1,38 @@
 .root {
-	display: flex;
-	border-radius: 20px;
-	flex-direction: column;
-	gap: 24px;
+  display: flex;
+  border-radius: 20px;
+  flex-direction: column;
+  gap: 24px;
   background-color: white;
-	text-decoration: none;
-	padding: 16px;
+  text-decoration: none;
+  padding: 16px;
 }
 
 .dialogWrapper {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
   gap: 16px;
 }
 
 .nameMessageBlock {
-	display: flex;
-	flex-direction: column;
-	gap: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .avatar {
-	flex-shrink: 0;
+  flex-shrink: 0;
 }
 
 .name {
-	color: black;
-	font-weight: 700;
+  color: black;
+  font-weight: 700;
 }
 
 .message {
-	color: rgb(85, 85, 85);
+  color: rgb(85, 85, 85);
 }
 
 .root:hover {
-	background-color: #f0f7fa;
+  background-color: #f0f7fa;
 }

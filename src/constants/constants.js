@@ -1,1 +1,1 @@
-export const urlsWithoutCards = ['/messages'];
+export const urlsWithoutCards = ["/messages"];

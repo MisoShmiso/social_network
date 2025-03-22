@@ -1,6 +1,6 @@
-.video{
+.video {
   width: calc(50% - 8px);
-  object-fit: cover; 
+  object-fit: cover;
 }
 
 .videos {
@@ -9,7 +9,7 @@
   flex-wrap: wrap;
 }
 
-.image{
+.image {
   display: flex;
   border: 2px solid red;
 }

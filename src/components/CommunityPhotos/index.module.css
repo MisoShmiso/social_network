@@ -1,4 +1,4 @@
-.image{
+.image {
   flex: 1;
   width: calc(33.333% - 16px);
   aspect-ratio: 1 / 1;
