@@ -35,7 +35,7 @@ const Dialog = observer(() => {
 		setValue('');
 	};
 
-	const cancelOfEdit = (message) => {
+	const handleEdit = (message) => {
 		setValue(message.description);
 		setIsEdit(true);
 		setEditId(message.id);
@@ -56,8 +56,8 @@ const Dialog = observer(() => {
 		}, 0);
 	};
 
-	const editMessage = () => {
-		messagesStore.editMessage({
+	const confirmEdit = () => {
+		messagesStore.confirmEdit({
 			description: value,
 			id: editId,
 		});
@@ -70,7 +70,7 @@ const Dialog = observer(() => {
 		if (event.key === 'Enter' && !event.shiftKey) {
 			event.preventDefault();
 			if (value) {
-				isEdit ? editMessage() : sendMessage();
+				isEdit ? confirmEdit() : sendMessage();
 			}
 		}
 	};
@@ -151,8 +151,8 @@ const Dialog = observer(() => {
 									}
 									onClick={() =>
 										isEdit && editId === message.id
-											? editMessage()
-											: cancelOfEdit(message)
+											? confirmEdit()
+											: handleEdit(message)
 									}
 								/>
 							)}
@@ -195,7 +195,7 @@ const Dialog = observer(() => {
 						size={'large'}
 						color={'default'}
 						icon={<SendOutlined />}
-						onClick={isEdit ? editMessage : sendMessage}
+						onClick={isEdit ? confirmEdit : sendMessage}
 						disabled={!value}
 					/>
 				</div>
