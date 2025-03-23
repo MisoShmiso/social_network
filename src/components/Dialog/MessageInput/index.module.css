@@ -1,0 +1,80 @@
+.inputBox {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.inputForEdit {
+	display: flex;
+	border: 1px solid grey;
+	width: 100%;
+	border-bottom: none;
+	border-radius: 8px 8px 0 0;
+	font-size: 14px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.editInfoWrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex: 1;
+	flex-direction: row;
+	padding: 11px;
+
+	padding-right: 16px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.leftEditSite {
+	display: flex;
+	flex-direction: column;
+	border-left: 2px solid blue;
+	padding-left: 6px;
+
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	max-width: 100%;
+}
+
+.leftEditSite > span:last-child {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.textAboutEditing {
+	color: rgb(3, 1, 155);
+	font-size: 14px;
+}
+
+.areaAndButton {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	align-items: center;
+	border-radius: 8px;
+	border: 1px solid grey;
+}
+
+.editedTextArea {
+	border-radius: 0 0 8px 8px;
+}
+
+.textArea {
+	border-radius: 8px;
+	border: none;
+}
+
+.textArea:focus,
+.textArea:hover,
+.textArea:active {
+	outline: none;
+	border: none;
+	box-shadow: none;
+}

@@ -1,20 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styles from './index.module.css';
 import { useParams } from 'react-router';
-import BackButton from '../BackButton';
-import { Avatar, Divider } from 'antd';
-import { Input, Button } from 'antd';
-import { SendOutlined, CloseOutlined } from '@ant-design/icons';
+import { Input } from 'antd';
 import { useStore } from '../../models/StoreContext';
 import { observer } from 'mobx-react-lite';
 import Message from './Message';
+import MessageInput from './MessageInput';
+import Header from './Header';
 
 const { TextArea } = Input;
 
 const Dialog = observer(() => {
 	const { id } = useParams();
-	const { messagesStore, dialogStore } = useStore();
-	const targetDialog = dialogStore.getDialogById(Number(id));
+	const { messagesStore } = useStore();
 	const [value, setValue] = useState();
 	const [editId, setEditId] = useState();
 	const messageAreaRef = useRef(null);
@@ -66,18 +64,7 @@ const Dialog = observer(() => {
 
 	return (
 		<div className={styles.root}>
-			<div className={styles.header}>
-				<div className={styles.headerTitleBlock}>
-					<BackButton />
-					<Avatar
-						className={styles.avatar}
-						size={80}
-						src={targetDialog.image}
-					/>
-					<span className={styles.name}>{targetDialog.name}</span>
-				</div>
-				<Divider className={styles.divider} />
-			</div>
+			<Header id={id} />
 			<div
 				className={styles.messageArea}
 				ref={messageAreaRef}
@@ -96,46 +83,17 @@ const Dialog = observer(() => {
 					);
 				})}
 			</div>
-			<div className={styles.inputBox}>
-				{editId && (
-					<div className={styles.inputForEdit}>
-						<div className={styles.editInfoWrapper}>
-							<div className={styles.leftEditSite}>
-								<span className={styles.textAboutEditing}>Editing message</span>
-								<span>{messagesStore.getMessageById(editId).description}</span>
-							</div>
-							<div className={styles.rightEditSite}>
-								<CloseOutlined onClick={cleanup} />
-							</div>
-						</div>
-					</div>
-				)}
-				<div
-					className={`${styles.areaAndButton} ${
-						editId ? styles.editedTextArea : ''
-					}`}
-				>
-					<TextArea
-						ref={textAreaRef}
-						className={styles.textArea}
-						value={value}
-						onChange={(e) => setValue(e.target.value)}
-						placeholder='Write a message'
-						autoSize={{ minRows: 3, maxRows: 5 }}
-						variant={editId ? 'underline' : 'outlined'}
-						onKeyDown={handleKeyDown}
-					/>
-					<Button
-						className={styles.button}
-						variant={'text'}
-						size={'large'}
-						color={'default'}
-						icon={<SendOutlined />}
-						onClick={editId ? confirmEdit : sendMessage}
-						disabled={!value}
-					/>
-				</div>
-			</div>
+			<MessageInput
+				value={value}
+				setValue={setValue}
+				editId={editId}
+				setEditId={setEditId}
+				textAreaRef={textAreaRef}
+				handleKeyDown={handleKeyDown}
+				cleanup={cleanup}
+				sendMessage={sendMessage}
+				confirmEdit={confirmEdit}
+			/>
 		</div>
 	);
 });
