@@ -192,3 +192,9 @@
   overflow-wrap: break-word; 
   white-space: normal; 
 }
+
+.updatedAt {
+  display: flex;
+  font-size: 12px;
+  color: rgb(87, 163, 193);
+}

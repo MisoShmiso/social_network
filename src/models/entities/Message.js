@@ -6,6 +6,7 @@ const Message = types.model('Message', {
 	author: types.string,
 	description: types.string,
 	createdAt: types.Date,
+	updatedAt: types.maybe(types.Date),
 });
 
 export default Message;

@@ -57,7 +57,7 @@ const Dialog = observer(() => {
 	};
 
 	const confirmEdit = () => {
-		messagesStore.confirmEdit({
+		messagesStore.editMessage({
 			description: value,
 			id: editId,
 		});
@@ -118,6 +118,9 @@ const Dialog = observer(() => {
 							>
 								<span className={styles.author}>{message.author}</span>
 								<span key={index}>{message.description}</span>
+								{message.updatedAt && (
+									<span className={styles.updatedAt}>Edited</span>
+								)}
 							</div>
 							{!isEdit && (
 								<Button

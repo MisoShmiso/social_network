@@ -35,6 +35,7 @@ const MessagesStore = types
 		editMessage: ({ id, description }) => {
 			const message = self.messages.find((message) => message.id === id);
 			message.description = description;
+			message.updatedAt = new Date();
 		},
 	}));
 
