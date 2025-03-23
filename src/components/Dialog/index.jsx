@@ -4,27 +4,26 @@ import { useParams } from 'react-router';
 import BackButton from '../BackButton';
 import { Avatar, Divider } from 'antd';
 import { Input, Button } from 'antd';
-import {
-	SendOutlined,
-	DeleteOutlined,
-	EditOutlined,
-	CloseOutlined,
-} from '@ant-design/icons';
+import { SendOutlined, CloseOutlined } from '@ant-design/icons';
 import { useStore } from '../../models/StoreContext';
-import MessagesStore from '../../models/stores/MessagesStore';
 import { observer } from 'mobx-react-lite';
+import Message from './Message';
 
 const { TextArea } = Input;
 
 const Dialog = observer(() => {
 	const { id } = useParams();
 	const { messagesStore, dialogStore } = useStore();
-	const [isEdit, setIsEdit] = useState(false);
 	const targetDialog = dialogStore.getDialogById(Number(id));
 	const [value, setValue] = useState();
 	const [editId, setEditId] = useState();
 	const messageAreaRef = useRef(null);
 	const textAreaRef = useRef(null);
+
+	const cleanup = () => {
+		setValue();
+		setEditId();
+	};
 
 	const sendMessage = () => {
 		messagesStore.sendMessage({
@@ -32,45 +31,22 @@ const Dialog = observer(() => {
 			dialogId: Number(id),
 			author: 'John Doe',
 		});
-		setValue('');
-	};
-
-	const handleEdit = (message) => {
-		setValue(message.description);
-		setIsEdit(true);
-		setEditId(message.id);
-		setTimeout(() => {
-			if (textAreaRef.current) {
-				let textAreaElement;
-				if (textAreaRef.current.resizableTextArea?.textArea) {
-					textAreaElement = textAreaRef.current.resizableTextArea.textArea;
-				} else if (textAreaRef.current.focus) {
-					textAreaElement = textAreaRef.current;
-				}
-				if (textAreaElement) {
-					textAreaElement.focus();
-					const textLength = textAreaElement.value.length;
-					textAreaElement.setSelectionRange(textLength, textLength);
-				}
-			}
-		}, 0);
+		cleanup();
 	};
 
 	const confirmEdit = () => {
-		messagesStore.confirmEdit({
+		messagesStore.editMessage({
 			description: value,
 			id: editId,
 		});
-		setIsEdit(false);
-		setValue();
-		setEditId();
+		cleanup();
 	};
 
 	const handleKeyDown = (event) => {
 		if (event.key === 'Enter' && !event.shiftKey) {
 			event.preventDefault();
 			if (value) {
-				isEdit ? confirmEdit() : sendMessage();
+				editId ? confirmEdit() : sendMessage();
 			}
 		}
 	};
@@ -108,63 +84,20 @@ const Dialog = observer(() => {
 			>
 				{messagesStore.getSortedByDate().map((message, index) => {
 					return (
-						<div className={styles.messageWrapper}>
-							<div
-								className={
-									isEdit && editId === message.id
-										? styles.changedBlock
-										: styles.messageBlock
-								}
-							>
-								<span className={styles.author}>{message.author}</span>
-								<span key={index}>{message.description}</span>
-								{message.updatedAt && (
-									<span className={styles.updatedAt}>Edited</span>
-								)}
-							</div>
-							{!isEdit && (
-								<Button
-									className={styles.button}
-									variant={'text'}
-									size={'small'}
-									color={'danger'}
-									disabled={isEdit}
-									icon={<DeleteOutlined />}
-									onClick={() => {
-										messagesStore.deleteMessage({ id: message.id });
-									}}
-								/>
-							)}
-							{!isEdit && (
-								<Button
-									className={
-										isEdit && message.id !== editId
-											? styles.hideButton
-											: styles.button
-									}
-									variant={'text'}
-									size={'small'}
-									color={'default'}
-									icon={
-										isEdit && editId === message.id ? (
-											<CloseOutlined />
-										) : (
-											<EditOutlined />
-										)
-									}
-									onClick={() =>
-										isEdit && editId === message.id
-											? confirmEdit()
-											: handleEdit(message)
-									}
-								/>
-							)}
-						</div>
+						<Message
+							setValue={setValue}
+							setEditId={setEditId}
+							editId={editId}
+							textAreaRef={textAreaRef}
+							confirmEdit={confirmEdit}
+							key={index}
+							message={message}
+						/>
 					);
 				})}
 			</div>
 			<div className={styles.inputBox}>
-				{isEdit && (
+				{editId && (
 					<div className={styles.inputForEdit}>
 						<div className={styles.editInfoWrapper}>
 							<div className={styles.leftEditSite}>
@@ -172,14 +105,14 @@ const Dialog = observer(() => {
 								<span>{messagesStore.getMessageById(editId).description}</span>
 							</div>
 							<div className={styles.rightEditSite}>
-								<CloseOutlined onClick={() => setIsEdit(false)} />
+								<CloseOutlined onClick={cleanup} />
 							</div>
 						</div>
 					</div>
 				)}
 				<div
 					className={`${styles.areaAndButton} ${
-						isEdit ? styles.editedTextArea : ''
+						editId ? styles.editedTextArea : ''
 					}`}
 				>
 					<TextArea
@@ -189,7 +122,7 @@ const Dialog = observer(() => {
 						onChange={(e) => setValue(e.target.value)}
 						placeholder='Write a message'
 						autoSize={{ minRows: 3, maxRows: 5 }}
-						variant={isEdit ? 'underline' : 'outlined'}
+						variant={editId ? 'underline' : 'outlined'}
 						onKeyDown={handleKeyDown}
 					/>
 					<Button
@@ -198,7 +131,7 @@ const Dialog = observer(() => {
 						size={'large'}
 						color={'default'}
 						icon={<SendOutlined />}
-						onClick={isEdit ? confirmEdit : sendMessage}
+						onClick={editId ? confirmEdit : sendMessage}
 						disabled={!value}
 					/>
 				</div>

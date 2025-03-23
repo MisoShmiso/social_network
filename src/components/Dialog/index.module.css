@@ -1,198 +1,144 @@
 .root {
-  display: flex;
-  flex: 1;
-  width: 50%;
-  border-radius: 20px;
-  flex-direction: column;
-  gap: 24px;
-  background-color: white;
-  padding: 32px;
-  justify-content: space-between;
-  height: calc(100vh - 190px);
-  overflow: hidden;
+	display: flex;
+	flex: 1;
+	width: 50%;
+	border-radius: 20px;
+	flex-direction: column;
+	gap: 24px;
+	background-color: white;
+	padding: 32px;
+	justify-content: space-between;
+	height: calc(100vh - 190px);
+	overflow: hidden;
 }
 
 .header {
-  display: flex;
-  gap: 16px;
-  flex-direction: column;
+	display: flex;
+	gap: 16px;
+	flex-direction: column;
 }
 
 .divider {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 .name {
-  font-weight: 500;
-  font-size: 20px;
+	font-weight: 500;
+	font-size: 20px;
 }
 
 .headerTitleBlock {
-  display: flex;
-  gap: 16px;
-  align-items: center;
+	display: flex;
+	gap: 16px;
+	align-items: center;
 }
 
 .messageArea {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  overflow-y: auto;
-  max-width: 100%;
-  max-height: 100%;
-  min-height: 0;
-  padding-right: 16px;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	overflow-y: auto;
+	max-width: 100%;
+	max-height: 100%;
+	min-height: 0;
+	padding-right: 16px;
 
-  scrollbar-width: thin;
-  scrollbar-color: #888888 #f1f1f1;
+	scrollbar-width: thin;
+	scrollbar-color: #888888 #f1f1f1;
 }
 
 .inputBox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.messageWrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 100%;
-  gap: 8px;
-}
-
-.messageBlock {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  flex: 1;
-  min-width: 0;
-  overflow-wrap: break-word;
-  white-space: normal;
-}
-
-.author {
-  font-size: 12px;
-  color: rgb(147, 147, 147);
-}
-
-.messageWrapper > :nth-child(2) {
-  margin-left: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .editingMessage {
-  font-size: 12px;
-  color: rgb(147, 147, 147);
-  display: flex;
-}
-
-.changedBlock {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  flex: 1;
-  min-width: 0;
-  overflow-wrap: break-word;
-  white-space: normal;
+	font-size: 12px;
+	color: rgb(147, 147, 147);
+	display: flex;
 }
 
 .messageHeader {
-  display: flex;
-  flex-direction: row;
-  gap: 48px;
-  align-items: center;
-}
-
-.hideButton {
-  display: none;
+	display: flex;
+	flex-direction: row;
+	gap: 48px;
+	align-items: center;
 }
 
 .inputForEdit {
-  display: flex;
-  border: 1px solid grey;
-  width: 100%;
-  border-bottom: none;
-  border-radius: 8px 8px 0 0;
-  font-size: 14px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+	display: flex;
+	border: 1px solid grey;
+	width: 100%;
+	border-bottom: none;
+	border-radius: 8px 8px 0 0;
+	font-size: 14px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 .leftEditSite {
-  display: flex;
-  flex-direction: column;
-  border-left: 2px solid blue;
-  padding-left: 6px;
+	display: flex;
+	flex-direction: column;
+	border-left: 2px solid blue;
+	padding-left: 6px;
 
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  max-width: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	max-width: 100%;
 }
 
 .textArea {
-  border-radius: 8px;
-  border: none;
+	border-radius: 8px;
+	border: none;
 }
 
 .textArea:focus,
 .textArea:hover,
 .textArea:active {
-  outline: none;
-  border: none;
-  box-shadow: none;
+	outline: none;
+	border: none;
+	box-shadow: none;
 }
 
 .textAboutEditing {
-  color: rgb(3, 1, 155);
-  font-size: 14px;
+	color: rgb(3, 1, 155);
+	font-size: 14px;
 }
 
 .areaAndButton {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  align-items: center;
-  border-radius: 8px;
-  border: 1px solid grey;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	align-items: center;
+	border-radius: 8px;
+	border: 1px solid grey;
 }
 
 .editedTextArea {
-  border-radius: 0 0 8px 8px;
+	border-radius: 0 0 8px 8px;
 }
 
 .editInfoWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex: 1;
-  flex-direction: row;
-  padding: 11px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex: 1;
+	flex-direction: row;
+	padding: 11px;
 
-  padding-right: 16px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+	padding-right: 16px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 .leftEditSite > span:last-child {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.messageBlock > span:last-child {
-  max-width: 100%; 
-  overflow-wrap: break-word; 
-  white-space: normal; 
-}
-
-.updatedAt {
-  display: flex;
-  font-size: 12px;
-  color: rgb(87, 163, 193);
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
