@@ -57,7 +57,7 @@ const Dialog = observer(() => {
 	};
 
 	const confirmEdit = () => {
-		messagesStore.editMessage({
+		messagesStore.confirmEdit({
 			description: value,
 			id: editId,
 		});

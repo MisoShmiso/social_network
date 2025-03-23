@@ -1,24 +1,24 @@
 .root {
-	background-color: rgb(255, 255, 255);
-	border-radius:0 0 20px 20px;
-	overflow: hidden;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0 0 20px 20px;
+  overflow: hidden;
 }
 
 .myProfile {
-	display:flex;
-	font-size: 18px;
-	padding: 24px 0 0 40px;
+  display: flex;
+  font-size: 18px;
+  padding: 24px 0 0 40px;
   font-weight: 600;
 }
 
 .menuItems {
-	display: flex;
-	margin: 24px 0;
-	flex-direction: column;
+  display: flex;
+  margin: 24px 0;
+  flex-direction: column;
 }
 
 .icon {
-	color: #054a75;
+  color: #054a75;
 }
 
 .link:hover {
@@ -26,14 +26,14 @@
 }
 
 .link {
-	color: #054a75;
-	text-decoration:none;
-	display: flex;
-	gap: 12px;
-	padding: 16px 16px 16px 40px; 
-	align-items: center;
+  color: #054a75;
+  text-decoration: none;
+  display: flex;
+  gap: 12px;
+  padding: 16px 16px 16px 40px;
+  align-items: center;
 }
 
 .active {
-  background-color: #f0f7fa; 
+  background-color: #f0f7fa;
 }

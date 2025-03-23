@@ -1,7 +1,7 @@
 .root {
   flex-direction: column;
   display: flex;
-  gap:24px;
+  gap: 24px;
   background-color: white;
   padding: 32px;
   border-radius: 20px;
@@ -19,7 +19,6 @@
 
 .totalCount {
   text-decoration: none;
-
 }
 
 .totalCount:hover {
