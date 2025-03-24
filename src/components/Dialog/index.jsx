@@ -1,14 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styles from './index.module.css';
 import { useParams } from 'react-router';
-import { Input } from 'antd';
 import { useStore } from '../../models/StoreContext';
 import { observer } from 'mobx-react-lite';
 import Message from './Message';
 import MessageInput from './MessageInput';
 import Header from './Header';
-
-const { TextArea } = Input;
 
 const Dialog = observer(() => {
 	const { id } = useParams();
