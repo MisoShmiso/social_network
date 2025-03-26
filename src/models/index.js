@@ -132,44 +132,7 @@ const store = RootStore.create({
 		],
 	},
 	usersStore: {
-		users: [
-			{
-				id: uuidv4(),
-				firstName: 'Mark',
-				lastName: 'Vibranovskiy',
-				age: 27,
-				image: friendPhoto6,
-				location: 'Crimea, Simferopol',
-				status: 'I love my beautiful gf!',
-			},
-			{
-				id: uuidv4(),
-				firstName: 'Diana',
-				lastName: 'Tolstihina',
-				age: 24,
-				image: friendPhoto6,
-				location: 'Crimea, Simferopol',
-				status: 'I love my cool bf!',
-			},
-			{
-				id: uuidv4(),
-				firstName: 'Victorya',
-				lastName: 'Tolstihina',
-				age: 35,
-				image: friendPhoto6,
-				location: 'Crimea, Simferopol',
-				status: 'i love my family!',
-			},
-			{
-				id: uuidv4(),
-				firstName: 'Mikhail',
-				lastName: 'Tolstihin',
-				age: 45,
-				image: friendPhoto6,
-				location: 'Crimea, Simferopol',
-				status: 'I love my cute wife!',
-			},
-		],
+		users: [],
 	},
 });
 

@@ -10,20 +10,17 @@ const User = ({ user, index }) => {
 					key={index}
 					className={styles.avatar}
 					size={95}
-					src={user.image}
+					src={user.photos.large}
 				/>
 			</div>
 			<div>
-				<span>{user.firstName}</span>
+				<span>{user.name}</span>
 			</div>
 			<div>
-				<span>{user.lastName}</span>
+				<span>{user.id}</span>
 			</div>
 			<div>
-				<span>{user.age}</span>
-			</div>
-			<div>
-				<span>{user.location}</span>
+				<span>{user.uniqueUrlName}</span>
 			</div>
 			<div>
 				<span>{user.status}</span>
