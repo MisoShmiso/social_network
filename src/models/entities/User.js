@@ -6,12 +6,12 @@ const Photos = types.model('Photos', {
 });
 
 const User = types.model('User', {
-	id: types.identifier,
+	id: types.number,
 	name: types.string,
 	photos: Photos,
 	status: types.maybeNull(types.string),
 	followed: types.boolean,
-	uniqueUrlName: types.string,
+	uniqueUrlName: types.maybeNull(types.string),
 });
 
 export default User;

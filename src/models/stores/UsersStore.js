@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const UsersStore = types
 	.model('UsersStore', {
-		users: types.frozen(),
+		users: types.array(User),
 		isLoading: types.optional(types.boolean, false),
 		error: types.optional(types.string, ''),
 	})
@@ -34,7 +34,16 @@ const UsersStore = types
 				const response = yield axios.get(
 					'https://social-network.samuraijs.com/api/1.0/users'
 				);
-				const usersData = response.data.items;
+				const usersData = response.data.items.map((user) => {
+					return {
+						id: user.id,
+						photos: user.photos,
+						status: user.status,
+						followed: user.followed,
+						uniqueUrlName: user.uniqueUrlName,
+						name: user.name,
+					};
+				});
 				console.log(usersData);
 				self.users = usersData;
 			} catch (error) {
